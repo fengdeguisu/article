@@ -1,0 +1,3810 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "https://github.com/knyar/nginx-lua-prometheus",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 19399,
+  "graphTooltip": 0,
+  "id": 63,
+  "iteration": 1766824270967,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 66,
+      "panels": [],
+      "title": "全站 QPS/RT/4xx/5x",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "QPS 详情",
+              "url": "/d/bGpi7YsVz/nginx-vts-da-pan?orgId=1&viewPanel=80"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "QPS"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "QPS 详情",
+                    "url": "/d/bGpi7YsVz/nginx-vts-da-pan?orgId=1&viewPanel=80"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "QPS"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "id": 60,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(rate(nginx_http_requests_total{}[1m]))",
+          "interval": "",
+          "legendFormat": "QPS",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "QPS",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 1
+      },
+      "id": 57,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "avg(nginx_http_connections{state!~\"accepts|handled\"})",
+          "hide": false,
+          "legendFormat": "平均活跃连接数",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(nginx_http_connections{state!~\"accepts|handled\"}) by (state)",
+          "hide": true,
+          "legendFormat": "{{state}}_连接数",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "平均活跃连接数",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "id": 82,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(nginx_http_request_duration_seconds_sum{host!~\"app.9nali.com|nacos.*|xmcws.ximalaya.com|youshu.pd.ximalaya.local|xvstc.ximalaya.com|fdfs.xmcdn.com|xysocket.ximalaya.com|clickhouse.*|op.file.ximalaya.com|xts.easy-monitor.pd.ximalaya.local|xmcwsnh.ximalaya.com|activity.ximalaya.com|voice.ximalaya.com|cce-prometheus-b24-1.pd.ximalaya.local|sunops.ximalaya.local|3rd.ximalaya.com\"}[5m]))/ sum(rate(nginx_http_request_duration_seconds_count{host!~\"app.9nali.com|nacos.*|xmcws.ximalaya.com|youshu.pd.ximalaya.local|xvstc.ximalaya.com|fdfs.xmcdn.com|xysocket.ximalaya.com|clickhouse.*|op.file.ximalaya.com|xts.easy-monitor.pd.ximalaya.local|xmcwsnh.ximalaya.com|activity.ximalaya.com|voice.ximalaya.com|cce-prometheus-b24-1.pd.ximalaya.local|sunops.ximalaya.local|3rd.ximalaya.com\"}[5m]))",
+          "hide": false,
+          "legendFormat": "平均请求响应时间(排除部分 websocket 域名)",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(nginx_http_request_duration_seconds_sum{host=~\"app.9nali.com|nacos.*|xmcws.ximalaya.com|youshu.pd.ximalaya.local|xvstc.ximalaya.com|fdfs.xmcdn.com|xysocket.ximalaya.com|clickhouse.*|op.file.ximalaya.com|xts.easy-monitor.pd.ximalaya.local|xmcwsnh.ximalaya.com|activity.ximalaya.com|voice.ximalaya.com|cce-prometheus-b24-1.pd.ximalaya.local|sunops.ximalaya.local|3rd.ximalaya.com\"}[5m]))/ sum(rate(nginx_http_request_duration_seconds_count{host=~\"app.9nali.com|nacos.*|xmcws.ximalaya.com|youshu.pd.ximalaya.local|xvstc.ximalaya.com|fdfs.xmcdn.com|xysocket.ximalaya.com|clickhouse.*|op.file.ximalaya.com|xts.easy-monitor.pd.ximalaya.local|xmcwsnh.ximalaya.com|activity.ximalaya.com|voice.ximalaya.com|cce-prometheus-b24-1.pd.ximalaya.local|sunops.ximalaya.local|3rd.ximalaya.com\"}[5m]))",
+          "hide": true,
+          "legendFormat": "部分 websocket 域名平均请求响应时间",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "平均请求响应时间",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 9
+      },
+      "id": 62,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(nginx_http_requests_total{status=~\"^4..|5..\"}[1m])) / sum(rate(nginx_http_requests_total{}[1m]))",
+          "legendFormat": "4xx 占比",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(nginx_http_requests_total{status=~\"^5..\"}[1m])) / sum(rate(nginx_http_requests_total{}[1m]))",
+          "hide": true,
+          "legendFormat": "5xx 占比",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "错误率",
+      "transformations": [],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 9
+      },
+      "id": 110,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(nginx_http_requests_total{status=~\"^4..\"}[1m])) / sum(rate(nginx_http_requests_total{}[1m]))",
+          "legendFormat": "4xx 占比",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(nginx_http_requests_total{status=~\"^5..\"}[1m])) / sum(rate(nginx_http_requests_total{}[1m]))",
+          "hide": true,
+          "legendFormat": "5xx 占比",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "4xx 错误率",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 9
+      },
+      "id": 111,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(nginx_http_requests_total{status=~\"^4..\"}[1m])) / sum(rate(nginx_http_requests_total{}[1m]))",
+          "hide": true,
+          "legendFormat": "4xx 占比",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(nginx_http_requests_total{status=~\"^5..\"}[1m])) / sum(rate(nginx_http_requests_total{}[1m]))",
+          "hide": false,
+          "legendFormat": "5xx 占比",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "5xx 错误率",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 114,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "avg(nginx_upstream_conn_total) by (upstream)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{upstream}}_连接数",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "upstream平均活跃连接数",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 113,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "links": [
+                {
+                  "targetBlank": true,
+                  "title": "域名详情",
+                  "url": "https://grafana.ximalaya.com/d/PKkexqE4z/nginx-vts-stats?orgId=1&var-host=${__field.labels.host}&var-region=All&var-group=All&var-instance=All&var-interval=1m"
+                }
+              ],
+              "mappings": []
+            },
+            "overrides": [
+              {
+                "__systemRef": "hideSeriesFrom",
+                "matcher": {
+                  "id": "byNames",
+                  "options": {
+                    "mode": "exclude",
+                    "names": [
+                      "Value",
+                      "*.ximalaya.com",
+                      "*.xmly.work",
+                      "ad.ximalaya.com",
+                      "adse.ximalaya.com",
+                      "adsehera.ximalaya.com",
+                      "api.pd.ximalaya.local",
+                      "api.xiaoyastar.com",
+                      "api.ximalaya.com",
+                      "appi.qijizuopin.com",
+                      "ar.ximalaya.com",
+                      "audio-ai.ximalaya.com",
+                      "chproxy-spoor.pd.ximalaya.local",
+                      "crown.ximalaya.com",
+                      "cupload.ximalaya.com",
+                      "gslbali.ximalaya.com",
+                      "hybrid.ximalaya.com",
+                      "jt.ximalaya.com",
+                      "linkeye.ximalaya.com",
+                      "live.ximalaya.com",
+                      "live.xmcdn.com",
+                      "location.ximalaya.com",
+                      "locationhera.ximalaya.com",
+                      "m.ximalaya.com",
+                      "metalslug.pd.ximalaya.local",
+                      "mlive.ximalaya.com",
+                      "mobile.ximalaya.com",
+                      "mobilehera.ximalaya.com",
+                      "mp.ximalaya.com",
+                      "mpay.pd.ximalaya.local",
+                      "mpay.ximalaya.com",
+                      "mres.ximalaya.com",
+                      "nacosbs.pd.ximalaya.local",
+                      "nacosnh.pd.ximalaya.local",
+                      "nacosnh2.pd.ximalaya.local",
+                      "ops.pd.ximalaya.local",
+                      "passport.ximalaya.com",
+                      "pc.ximalaya.com",
+                      "pns.ximalaya.com",
+                      "pull.ximalaya.com",
+                      "search.ximalaya.com",
+                      "searchera.ximalaya.com",
+                      "www.joinchitchat.com",
+                      "xdcs-collector.ximalaya.com",
+                      "xdcs.pd.ximalaya.local",
+                      "xmc.ximalaya.com",
+                      "xmkp-aicall.ximalaya.com",
+                      "xql.pd.ximalaya.local",
+                      "xuid-server.ximalaya.com",
+                      "xvstc.ximalaya.com",
+                      "xxm.ximalaya.com"
+                    ],
+                    "prefix": "All except:",
+                    "readOnly": true
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 18
+          },
+          "id": 75,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true,
+              "sortBy": "Value",
+              "sortDesc": false,
+              "values": [
+                "value"
+              ]
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(nginx_http_requests_total{}[1m])) by (host) > 100",
+              "legendFormat": "{{host}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "各域名 QPS 占比（QPS >100）",
+          "type": "piechart"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "links": [
+                {
+                  "targetBlank": true,
+                  "title": "域名详情",
+                  "url": "https://grafana.ximalaya.com/d/PKkexqE4z/nginx-vts-stats?orgId=1&var-host=${__field.labels.host}&var-region=All&var-group=All&var-instance=All&var-interval=1m"
+                }
+              ],
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 18
+          },
+          "id": 73,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true,
+              "sortBy": "Value",
+              "sortDesc": false,
+              "values": [
+                "value"
+              ]
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(nginx_http_requests_total{status=~\"^4..\"}[1m])) by (host) > 0",
+              "legendFormat": "{{host}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "各域名 4xx 占比",
+          "type": "piechart"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "links": [
+                {
+                  "targetBlank": true,
+                  "title": "域名详情",
+                  "url": "https://grafana.ximalaya.com/d/PKkexqE4z/nginx-vts-stats?orgId=1&var-host=${__field.labels.host}&var-region=All&var-group=All&var-instance=All&var-interval=1m"
+                }
+              ],
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 18
+          },
+          "id": 74,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true,
+              "sortBy": "Value",
+              "sortDesc": false,
+              "values": [
+                "value"
+              ]
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(nginx_http_requests_total{status=~\"^5..\"}[1m])) by (host) > 0",
+              "legendFormat": "{{host}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "各域名 5xx 占比",
+          "type": "piechart"
+        }
+      ],
+      "title": "饼图",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 68,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMin": 0,
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 1,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 19
+          },
+          "id": 63,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "min",
+                "max",
+                "mean"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(nginx_http_requests_total{host=\"*.ximalaya.com\"}[1m]))",
+              "hide": false,
+              "legendFormat": "www.ximalaya.com",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[1m])) by (host)",
+              "hide": false,
+              "legendFormat": "{{host}}",
+              "range": true,
+              "refId": "B"
+            }
+          ],
+          "title": "重点域名 QPS",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMin": 0,
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 1,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "s"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 19
+          },
+          "id": 69,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "min",
+                "max",
+                "mean"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Max",
+              "sortDesc": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(nginx_http_request_duration_seconds_sum{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[5m])) by (host) / sum(rate(nginx_http_request_duration_seconds_count{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[5m])) by (host)",
+              "hide": false,
+              "legendFormat": "{{host}}_平均请求响应时间",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(nginx_http_request_duration_seconds_sum{host=\"*.ximalaya.com\"}[5m]))/ sum(rate(nginx_http_request_duration_seconds_count{host=\"*.ximalaya.com\"}[5m]))",
+              "hide": false,
+              "legendFormat": "www.ximalaya.com平均请求响应时间",
+              "range": true,
+              "refId": "B"
+            }
+          ],
+          "title": "平均请求响应时间",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMin": 0,
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 1,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 19
+          },
+          "id": 64,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "min",
+                "max",
+                "mean"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\",status=~\"^4..\"}[1m])) by (host)",
+              "hide": false,
+              "legendFormat": "{{host}} 4xx请求数",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\",status=~\"^5..\"}[1m])) by (host)",
+              "hide": false,
+              "legendFormat": "{{host}}_5xx请求数",
+              "range": true,
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(nginx_http_requests_total{host=\"*.ximalaya.com\",status=~\"^4..\"}[1m])) by (host)",
+              "hide": false,
+              "legendFormat": "www.ximalaya.com_4xx请求数",
+              "range": true,
+              "refId": "C"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(nginx_http_requests_total{host=\"*.ximalaya.com\",status=~\"^5..\"}[1m])) by (host)",
+              "hide": false,
+              "legendFormat": "www.ximalaya.com_5xx请求数",
+              "range": true,
+              "refId": "D"
+            }
+          ],
+          "title": "重点域名 4xx/5xx 请求数",
+          "type": "timeseries"
+        }
+      ],
+      "title": "重点域名",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 79,
+      "panels": [],
+      "title": "域名/主机维度详细信息",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 31
+      },
+      "id": 80,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(rate(nginx_http_requests_total{}[1m]))by(${qps_group})",
+          "interval": "",
+          "legendFormat": "{{host}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "各域名 QPS",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 31
+      },
+      "id": 56,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "(sum(rate(nginx_http_request_duration_seconds_sum{host!~\"app.9nali.com|nacos.*|xmcws.ximalaya.com|youshu.pd.ximalaya.local|xvstc.ximalaya.com|fdfs.xmcdn.com|xysocket.ximalaya.com|clickhouse.*|op.file.ximalaya.com|xts.easy-monitor.pd.ximalaya.local|xmcwsnh.ximalaya.com|activity.ximalaya.com|voice.ximalaya.com|cce-prometheus-b24-1.pd.ximalaya.local|sunops.ximalaya.local|3rd.ximalaya.com\"}[5m]))by(${qps_group})/sum(rate(nginx_http_request_duration_seconds_count{host!~\"app.9nali.com|nacos.*|xmcws.ximalaya.com|youshu.pd.ximalaya.local|xvstc.ximalaya.com|fdfs.xmcdn.com|xysocket.ximalaya.com|clickhouse.*|op.file.ximalaya.com|xts.easy-monitor.pd.ximalaya.local|xmcwsnh.ximalaya.com|activity.ximalaya.com|voice.ximalaya.com|cce-prometheus-b24-1.pd.ximalaya.local|sunops.ximalaya.local|3rd.ximalaya.com\"}[5m]))by(${qps_group}))>0",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{host}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "平均请求响应时间",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 31
+      },
+      "id": 81,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "avg(nginx_http_connections{})by(${qps_group},state)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{${qps_group}}}_{{state}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "平均活跃连接数（主机维度）",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 39
+      },
+      "id": 83,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(rate(nginx_http_requests_total{status=~\"^4..\"}[1m]))by(${qps_group})>0",
+          "interval": "",
+          "legendFormat": "{{${qps_group}}}_4xx请求数",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "4xx 请求数",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 39
+      },
+      "id": 84,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(rate(nginx_http_requests_total{status=~\"^5..\"}[1m]))by(${qps_group}) > 0",
+          "interval": "",
+          "legendFormat": "{{${qps_group}}}_5xx 请求数",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "5xx 请求数",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 39
+      },
+      "id": 85,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Last *",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "(sum(rate(nginx_http_requests_total{status=~\"^4..\"}[1m]))by(${qps_group})/sum(rate(nginx_http_requests_total{}[1m]))by(${qps_group}))>0",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{${qps_group}}}_4xx 占比",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "(sum(rate(nginx_http_requests_total{status=~\"^5..\"}[1m]))by(${qps_group})/sum(rate(nginx_http_requests_total{}[1m]))by(${qps_group}))>0",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{${qps_group}}}_5xx 占比",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "4xx/5xx 占比",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 47
+      },
+      "id": 115,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(nginx_upstream_conn_total{pod=~\"$pod\",upstream=~\"$upstream\"})  by ($group)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{pod}}_{{upstream}}_连接数",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "upstream活跃连接数（主机维度）",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 56
+      },
+      "id": 100,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "dateTimeAsLocal"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 6,
+            "x": 0,
+            "y": 37
+          },
+          "id": 98,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Value"
+              }
+            ]
+          },
+          "pluginVersion": "8.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum(rate(nginx_http_requests_total{}[5m]))by(host)",
+              "format": "table",
+              "instant": true,
+              "legendFormat": "{{host}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "域名 QPS TOP（last 5m）",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percentunit"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "dateTimeAsLocal"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 6,
+            "x": 6,
+            "y": 37
+          },
+          "id": 101,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Value"
+              }
+            ]
+          },
+          "pluginVersion": "8.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "(sum(rate(nginx_http_requests_total{status=~\"^4..\"}[5m]))by(host)/sum(rate(nginx_http_requests_total{}[5m]))by(host))>0",
+              "format": "table",
+              "instant": true,
+              "legendFormat": "{{host}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "域名 4xx 占比 TOP（last 5m）",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percentunit"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "dateTimeAsLocal"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 6,
+            "x": 12,
+            "y": 37
+          },
+          "id": 102,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Value"
+              }
+            ]
+          },
+          "pluginVersion": "8.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "(sum(rate(nginx_http_requests_total{status=~\"^5..\"}[5m]))by(host)/sum(rate(nginx_http_requests_total{}[5m]))by(host))>0",
+              "format": "table",
+              "instant": true,
+              "legendFormat": "{{host}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "域名 5xx 占比 TOP（last 5m）",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "s"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "dateTimeAsLocal"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 6,
+            "x": 18,
+            "y": 37
+          },
+          "id": 103,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Value"
+              }
+            ]
+          },
+          "pluginVersion": "8.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum(rate(nginx_http_request_duration_seconds_sum{}[5m])) by (host) / sum(rate(nginx_http_request_duration_seconds_count{}[5m])) by (host) > 0",
+              "format": "table",
+              "instant": true,
+              "legendFormat": "{{host}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "域名响应时间 TOP（last 5m）",
+          "type": "table"
+        }
+      ],
+      "title": "TOP（All 域名）",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 57
+      },
+      "id": 105,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "dateTimeAsLocal"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 6,
+            "x": 0,
+            "y": 38
+          },
+          "id": 106,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Value"
+              }
+            ]
+          },
+          "pluginVersion": "8.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[5m]))by(host)",
+              "format": "table",
+              "instant": true,
+              "legendFormat": "{{host}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "域名 QPS TOP（last 5m）",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percentunit"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "dateTimeAsLocal"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 6,
+            "x": 6,
+            "y": 38
+          },
+          "id": 107,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Value"
+              }
+            ]
+          },
+          "pluginVersion": "8.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "(sum(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\",status=~\"^4..\"}[5m]))by(host)/sum(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[5m]))by(host))>0",
+              "format": "table",
+              "instant": true,
+              "legendFormat": "{{host}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "域名 4xx 占比 TOP（last 5m）",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percentunit"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "dateTimeAsLocal"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 6,
+            "x": 12,
+            "y": 38
+          },
+          "id": 108,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Value"
+              }
+            ]
+          },
+          "pluginVersion": "8.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "(sum(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\",status=~\"^5..\"}[5m]))by(host)/sum(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[5m]))by(host))>0",
+              "format": "table",
+              "instant": true,
+              "legendFormat": "{{host}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "域名 5xx 占比 TOP（last 5m）",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "s"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "dateTimeAsLocal"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 6,
+            "x": 18,
+            "y": 38
+          },
+          "id": 109,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Value"
+              }
+            ]
+          },
+          "pluginVersion": "8.3.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum(rate(nginx_http_request_duration_seconds_sum{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[5m])) by (host) / sum(rate(nginx_http_request_duration_seconds_count{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|www.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[5m])) by (host) > 0",
+              "format": "table",
+              "instant": true,
+              "legendFormat": "{{host}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "域名响应时间 TOP（last 5m）",
+          "type": "table"
+        }
+      ],
+      "title": "TOP（重点域名）",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 58
+      },
+      "id": 89,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 100,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 39
+          },
+          "id": 87,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "((sum(rate(nginx_http_requests_total{}[1m]))by(host)>100)/(sum(rate(nginx_http_requests_total{}[1m] offset 1m))by(host)>100)*100)>150",
+              "legendFormat": "{{host}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "QPS 环比 (1m) 大于 50%",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 100,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 39
+          },
+          "id": 91,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "(((sum by(host)(rate(nginx_http_request_duration_seconds_sum{host!~\"app.9nali.com|nacos.*|xmcws.ximalaya.com|youshu.pd.ximalaya.local|xvstc.ximalaya.com|fdfs.xmcdn.com|xysocket.ximalaya.com|clickhouse.*|op.file.ximalaya.com|xts.easy-monitor.pd.ximalaya.local|xmcwsnh.ximalaya.com|activity.ximalaya.com|voice.ximalaya.com|cce-prometheus-b24-1.pd.ximalaya.local|sunops.ximalaya.local|3rd.ximalaya.com\"}[5m]))/sum by(host)(rate(nginx_http_request_duration_seconds_count{host!~\"app.9nali.com|nacos.*|xmcws.ximalaya.com|youshu.pd.ximalaya.local|xvstc.ximalaya.com|fdfs.xmcdn.com|xysocket.ximalaya.com|clickhouse.*|op.file.ximalaya.com|xts.easy-monitor.pd.ximalaya.local|xmcwsnh.ximalaya.com|activity.ximalaya.com|voice.ximalaya.com|cce-prometheus-b24-1.pd.ximalaya.local|sunops.ximalaya.local|3rd.ximalaya.com\"}[5m])))>0.001/(sum by(host)(rate(nginx_http_request_duration_seconds_sum{host!~\"app.9nali.com|nacos.*|xmcws.ximalaya.com|youshu.pd.ximalaya.local|xvstc.ximalaya.com|fdfs.xmcdn.com|xysocket.ximalaya.com|clickhouse.*|op.file.ximalaya.com|xts.easy-monitor.pd.ximalaya.local|xmcwsnh.ximalaya.com|activity.ximalaya.com|voice.ximalaya.com|cce-prometheus-b24-1.pd.ximalaya.local|sunops.ximalaya.local|3rd.ximalaya.com\"}[5m] offset 5m))/sum by(host)(rate(nginx_http_request_duration_seconds_count{host!~\"app.9nali.com|nacos.*|xmcws.ximalaya.com|youshu.pd.ximalaya.local|xvstc.ximalaya.com|fdfs.xmcdn.com|xysocket.ximalaya.com|clickhouse.*|op.file.ximalaya.com|xts.easy-monitor.pd.ximalaya.local|xmcwsnh.ximalaya.com|activity.ximalaya.com|voice.ximalaya.com|cce-prometheus-b24-1.pd.ximalaya.local|sunops.ximalaya.local|3rd.ximalaya.com\"}[5m] offset 5m)))>0.001)*100)>150",
+              "hide": false,
+              "legendFormat": "{{host}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "响应时间环比 (1m) 大于 50%",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 100,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 39
+          },
+          "id": 92,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "(sum by(host)(rate(nginx_http_requests_total{status=~\"^4..\"}[1m]))/sum by(host)(rate(nginx_http_requests_total{}[1m])))*100>1",
+              "hide": false,
+              "legendFormat": "{{host}}_4xx",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "(sum by(host)(rate(nginx_http_requests_total{status=~\"^5..\"}[1m]))/sum by(host)(rate(nginx_http_requests_total{}[1m])))*100>1",
+              "hide": false,
+              "legendFormat": "{{host}}_5xx",
+              "range": true,
+              "refId": "B"
+            }
+          ],
+          "title": "4xx/5xx 占比大于 1%",
+          "type": "timeseries"
+        }
+      ],
+      "title": "异常&告警",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 59
+      },
+      "id": 94,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 100,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 40
+          },
+          "id": 95,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "((sum(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|\\\\*.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[1m]))by(host)>100)/(sum(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|\\\\*.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[1m] offset 1m))by(host)>100)*100)>150",
+              "legendFormat": "{{host}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "QPS 环比 (1m) 大于 50%",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 100,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 40
+          },
+          "id": 96,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "(((sum by(host)(rate(nginx_http_request_duration_seconds_sum{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|\\\\*.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[5m]))/sum by(host)(rate(nginx_http_request_duration_seconds_count{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|\\\\*.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[5m])))>0.001/(sum by(host)(rate(nginx_http_request_duration_seconds_sum{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|\\\\*.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[5m] offset 5m))/sum by(host)(rate(nginx_http_request_duration_seconds_count{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|\\\\*.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[5m] offset 5m)))>0.001)*100)>150",
+              "hide": false,
+              "legendFormat": "{{host}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "响应时间环比 (1m) 大于 50%",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 100,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 40
+          },
+          "id": 97,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "(sum by(host)(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|\\\\*.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\",status=~\"^4..\"}[1m]))/sum by(host)(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|\\\\*.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[1m])))*100>1",
+              "hide": false,
+              "legendFormat": "{{host}}_4xx",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "(sum by(host)(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|\\\\*.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\",status=~\"^5..\"}[1m]))/sum by(host)(rate(nginx_http_requests_total{host=~\"growth.ximalaya.com|mermaid.ximalaya.com|mobile.ximalaya.com|xdcs-collector.ximalaya.com|adse.ximalaya.com|m.ximalaya.com|api.ximalaya.com|mobilehera.ximalaya.com|adbehavior.ximalaya.com|pns.ximalaya.com|\\\\*.ximalaya.com|mres.ximalaya.com|mobwsa.ximalaya.com|live.ximalaya.com|linkeye.ximalaya.com|adsehera.ximalaya.com|mwsa.ximalaya.com|gslbtx.ximalaya.com|mermaidhera.ximalaya.com|xmc.ximalaya.com|mlive.ximalaya.com|search.ximalaya.com|ar.ximalaya.com|xdcs-collectorhera.ximalaya.com|pc.ximalaya.com|api.xiaoyastar.com|hybrid.ximalaya.com|xxm.ximalaya.com|crown.ximalaya.com|adse.wsa.ximalaya.com|passport.ximalaya.com|livewsa.ximalaya.com|adbehavior.wsa.ximalaya.com|mpay.ximalaya.com|locationhera.ximalaya.com|location.ximalaya.com|appi.qijizuopin.com|mp.ximalaya.com|passportws.ximalaya.com|ad.ximalaya.com|ops.ximalaya.com|searchwsa.ximalaya.com|www.qingxuetang.com|jt.ximalaya.com|searchera.ximalaya.com|pages.ximalaya.com|adbehaviorhera.ximalaya.com|m.qingxuetang.com|mhera.ximalaya.com|studio.ximalaya.com|open.ximalaya.com|play.ximalaya.com\"}[1m])))*100>1",
+              "hide": false,
+              "legendFormat": "{{host}}_5xx",
+              "range": true,
+              "refId": "B"
+            }
+          ],
+          "title": "4xx/5xx 占比大于 1%",
+          "type": "timeseries"
+        }
+      ],
+      "title": "重点域名异常&告警",
+      "type": "row"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 33,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "prometheus",
+          "value": "prometheus"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "Datasource",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "/prometheus/",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "allValue": "pod,upstream",
+        "current": {
+          "selected": true,
+          "text": "pod",
+          "value": "pod"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "upstream汇总类型",
+        "multi": false,
+        "name": "group",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": true,
+            "text": "pod",
+            "value": "pod"
+          },
+          {
+            "selected": false,
+            "text": "upstream",
+            "value": "upstream"
+          }
+        ],
+        "query": "pod,upstream",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": "pod,instance",
+        "current": {
+          "selected": true,
+          "text": "instance",
+          "value": "instance"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "qps分组维度",
+        "multi": false,
+        "name": "qps_group",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "pod",
+            "value": "pod"
+          },
+          {
+            "selected": true,
+            "text": "instance",
+            "value": "instance"
+          }
+        ],
+        "query": "pod,instance",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P1809F7CD0C75ACF3"
+        },
+        "definition": "label_values(nginx_upstream_conn_total,pod)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "upstream pod",
+        "multi": false,
+        "name": "pod",
+        "options": [],
+        "query": {
+          "query": "label_values(nginx_upstream_conn_total,pod)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P1809F7CD0C75ACF3"
+        },
+        "definition": "label_values(nginx_upstream_conn_total,upstream)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "upstream",
+        "multi": true,
+        "name": "upstream",
+        "options": [],
+        "query": {
+          "query": "label_values(nginx_upstream_conn_total,upstream)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Nginx Lua Prometheus Dashboard",
+  "uid": "bGpi7YsVz",
+  "version": 8,
+  "weekStart": ""
+}
